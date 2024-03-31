@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import FilePicker from "@/components/FilePicker";
 import ChatWindow from '@/components/ChatWindow';
 import Preview from '@/components/Preview';
@@ -87,11 +87,13 @@ export default function HomePage() {
             messages={messages}
             setSelectedFile={setSelectedFile}
             setMessages={setMessages}
+            setPage={setPage}
           />
           <Preview fileToPreview={selectedFile} page={page} />
         </div>
       ) : (
         <FilePicker
+          setPage={setPage}
           setSelectedFile={setSelectedFile} />
       )}
     </div>

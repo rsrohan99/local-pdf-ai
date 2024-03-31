@@ -19,6 +19,7 @@ interface ChatWindowProps {
   messages: ChatMessage[],
   setMessages: Dispatch<SetStateAction<ChatMessage[]>>,
   setSelectedFile: Dispatch<SetStateAction<File | null>>,
+  setPage: Dispatch<SetStateAction<number>>
 }
 
 const ChatWindow: React.FC<ChatWindowProps> = ({
@@ -27,22 +28,25 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   messages,
   setMessages,
   startChat,
+  setPage,
   setSelectedFile
 }) => {
   const [input, setInput] = useState("")
-  const messageClass = "rounded-xl p-3 block relative max-w-max text-gray-700"
-  const aiMessageClass = `text-start bg-gray-300 float-left ${messageClass}`
-  const humanMessageClass = `text-end bg-blue-400 text-gray-50 float-right ${messageClass}`
+  const messageClass = "rounded-3xl p-3 block relative max-w-max"
+  const aiMessageClass = `text-start rounded-bl bg-gray-300 float-left text-gray-700 ${messageClass}`
+  const humanMessageClass = `text-end rounded-br bg-blue-400 text-gray-50 float-right ${messageClass}`
 
   const closePDF = async () => {
     await resetChatEngine();
     setMessages([]);
     setSelectedFile(null);
+    setPage(1)
   }
 
   const resetChat = async () => {
     await resetChatEngine();
     setMessages([])
+    setPage(1)
   }
 
   return (

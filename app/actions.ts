@@ -12,10 +12,10 @@ interface LCDoc {
   metadata: any,
 }
 
-
 const embedModel = new OllamaEmbedding({
   model: 'nomic-embed-text'
 })
+
 const llm = new Ollama({
   model: "phi",
   // model: "gemma",

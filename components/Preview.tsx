@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import * as pdfobject from "pdfobject"
 
 interface PreviewProps {
@@ -15,29 +15,36 @@ const Preview: React.FC<PreviewProps> = ({
 
   const [b64String, setb64String] = useState<string | null>(null)
 
-  const reader = new FileReader()
-  reader.onload = () => {
-    setb64String(reader.result as string);
-  }
-  reader.readAsDataURL(fileToPreview)
-  // useEffect(() => {
-  //   console.log(`Page: ${page}`)
-  // }, [page])
+
   // useEffect(() => {
   //   console.log(b64String)
   // }, [b64String])
-  const options = {
-    title: fileToPreview.name,
-    pdfOpenParams: {
-      view: "fitH",
-      page: page || 1,
-      zoom: "scale,left,top",
-      pageMode: 'none'
+  useEffect(() => {
+    const options = {
+      title: fileToPreview.name,
+      pdfOpenParams: {
+        view: "fitH",
+        page: page || 1,
+        zoom: "scale,left,top",
+        pageMode: 'none'
+      }
     }
-  }
-  pdfobject.embed(b64String as string, "#pdfobject", options)
+    console.log(`Page: ${page}`)
+    const reader = new FileReader()
+    reader.onload = () => {
+      setb64String(reader.result as string);
+    }
+    reader.readAsDataURL(fileToPreview)
+    pdfobject.embed(b64String as string, "#pdfobject", options)
+  }, [page, b64String])
+
   return (
     <div className="flex-grow roundex-xl" id="pdfobject">
+      {/* <Document file={fileToPreview} onLoadSuccess={({ numPages }) => setNumPages(numPages)}> */}
+      {/*   {Array.apply(null, Array(numPages)) */}
+      {/*     .map((_, i) => i + 1) */}
+      {/*     .map(page => <Page pageNumber={page} />)} */}
+      {/* </Document> */}
       {/* <PDFObject */}
       {/*   url={b64String as string} */}
       {/*   page={page || 1} */}

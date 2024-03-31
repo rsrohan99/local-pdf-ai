@@ -43,8 +43,6 @@ export default function HomePage() {
     } finally {
       setIsLoading(false)
     }
-
-
   }
 
 

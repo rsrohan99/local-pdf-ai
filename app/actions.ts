@@ -1,6 +1,6 @@
 'use server'
 
-import { Document, MetadataMode } from "llamaindex/Node"
+import { Document } from "llamaindex/Node"
 import { VectorStoreIndex } from "llamaindex/indices/vectorStore/index"
 import { ContextChatEngine } from "llamaindex/engines/chat/ContextChatEngine"
 import { OllamaEmbedding } from "llamaindex/embeddings/OllamaEmbedding"

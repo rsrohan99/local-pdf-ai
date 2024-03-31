@@ -40,20 +40,6 @@ const Preview: React.FC<PreviewProps> = ({
 
   return (
     <div className="flex-grow roundex-xl" id="pdfobject">
-      {/* <Document file={fileToPreview} onLoadSuccess={({ numPages }) => setNumPages(numPages)}> */}
-      {/*   {Array.apply(null, Array(numPages)) */}
-      {/*     .map((_, i) => i + 1) */}
-      {/*     .map(page => <Page pageNumber={page} />)} */}
-      {/* </Document> */}
-      {/* <PDFObject */}
-      {/*   url={b64String as string} */}
-      {/*   page={page || 1} */}
-      {/*   height="90vh" */}
-      {/*   pdfOpenParams={{ */}
-      {/*     view: "FitH", */}
-      {/*     zoom: "scale,left,top" */}
-      {/*   }} */}
-      {/* /> */}
     </div>
   )
 }
